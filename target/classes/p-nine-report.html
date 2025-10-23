@@ -1,9 +1,15 @@
-<!DOCTYPE html definition [<!ENTITY amp "&#38;">
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BNG P9 Report</title>
+    <style>
+        @page {
+            size: A3 landscape;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body style="font-family:Arial, Helvetica, sans-serif ; margin-top: 20px;">
     <div class="title">
@@ -13,33 +19,34 @@
     </div>
 
     <div class="container" style="overflow: hidden; ">
-        <div class="column-left" style="float: left; width: 50%;">
+        <div class="column-left" style="float: left; width: 60%; height:5px; margin-top:20px; margin-bottom:30px;">
             <div class="item">Employer's Name: ACME Group Ltd</div>
             <div class="item">Employee's Main Name: Muli</div>
             <div class="item">Employee's Other Name: Carol</div>
         </div>
 
-        <div class="column-right" style="float: right; width: 50%;">
+        <div class="column-right" style="float: right; width: 40%; margin-top:30px;margin-bottom:20px;">
             <div class="item">Employer's P.I.N.: P05163355A</div>
              <div class="item">Employee's P.I.N.: A004010560Y</div>
         </div>
     </div>
 
+    <div style="overflow-x: auto; width: 100%;">
     <table border="1" style="border:1px solid black; border-collapse:collapse; ">
         <tr>
             <th>MONTH</th>
-            <th>Basic Salary <br><br><br> Kshs</th>
-            <th>Benefits -Non Cash <br> <br>Kshs</th>
-            <th>Value of Quarters <br><br> <br> Kshs</th>
-            <th>Total Gross Pay<br><br> <br> Kshs</th>
-            <th colspan="3">Defined Contribution Retirement Scheme<br><br><br>Kshs.</th>
-            <th>Owner-Occupied Interest<br><br>Kshs</th>
-            <th>Retirement Contribution & Owner Occupied Interest</th>
-            <th>Changeable Pay<br><br><br>Kshs</th>
-            <th>Tax Charged<br><br><br>Kshs</th>
-            <th>Personal Relief<br><br><br>Kshs</th>
-            <th>Insurance Relief<br><br><br>Kshs</th>
-            <th>P.A.Y.E Tax(J.K)<br><br><br>Kshs</th>
+            <th>Basic Salary <br /><br /><br /> Kshs</th>
+            <th>Benefits -Non Cash <br /> <br />Kshs</th>
+            <th>Value of Quarters <br /><br /> <br /> Kshs</th>
+            <th>Total Gross Pay<br /><br /> <br /> Kshs</th>
+            <th colspan="3">Defined Contribution Retirement Scheme<br /><br /><br />Kshs.</th>
+            <th>Owner-Occupied Interest<br /><br />Kshs</th>
+            <th>Retirement Contribution &amp; Owner Occupied Interest</th>
+            <th>Changeable Pay<br /><br /><br />Kshs</th>
+            <th>Tax Charged<br /><br /><br />Kshs</th>
+            <th>Personal Relief<br /><br /><br />Kshs</th>
+            <th>Insurance Relief<br /><br /><br />Kshs</th>
+            <th>P.A.Y.E Tax(J.K)<br /><br /><br />Kshs</th>
         </tr>
 
         <tr class="col-letters">
@@ -51,14 +58,14 @@
             <th colspan="3">E
                 <table border="1" cellspacing="0" cellpadding="18" style="width:101%; margin-left:-1px; border-collapse: collapse; margin-top:30px;margin-bottom: 0; ">
                     <tr>
-                    <th style="border:1px solid black; width:36%; padding:2px; font-size:10px; text-align:left;">E1<br>30% of A</th>
-                    <th style="border:1px solid black; width:27%; padding: 2px; font-size:10px; text-align:left;">E2<br>Actual</th>
-                    <th style="border:1px solid black; padding:20px;font-size:10px; text-align:left;">E3<br>Fixed</th>
+                    <th style="border:1px solid black; width:36%; padding:2px; font-size:10px; text-align:left;">E1<br />30% of A</th>
+                    <th style="border:1px solid black; width:27%; padding: 2px; font-size:10px; text-align:left;">E2<br />Actual</th>
+                    <th style="border:1px solid black; padding:20px;font-size:10px; text-align:left;">E3<br />Fixed</th>
                     </tr>
                 </table>
             </th>
-            <th>F <br> Amount of Interest</th>
-            <th>G<br>The lowest of E added to F</th>
+            <th>F <br /> Amount of Interest</th>
+            <th>G<br />The lowest of E added to F</th>
             <th>H</th>
             <th>J</th>
             <th colspan="2">K</th>
@@ -300,9 +307,8 @@
                 <td>0.00</td>
                 <td>363,364.00</td>
             </tr>
-        </tr>
-
     </table>
+    </div>
     <div class="footer-left" style="float:left;">
         <div class="item">To be completed by Employer at end of year</div>
         <div class="item">TOTAL CHARGEABLE PAY (COL H) Kshs 1,438,200.00</div>
