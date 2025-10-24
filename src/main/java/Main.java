@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 
 public class Main {
     public static void main(String[] args) {
-        String htmlFilePath = "src/main/resources/account-statements.html";
+        String htmlFilePath = "src/main/resources/p-nine-report.html";
         String outputPdfPath = "src/out/report.pdf";
 
         try {

@@ -56,7 +56,7 @@ public class SendEmail {
             String fileName = "src/out/report.pdf";
             DataSource source = new FileDataSource(fileName);
             attachmentPart.setDataHandler(new DataHandler(source));
-            attachmentPart.setFileName(new File(fileName).getName());
+             .setFileName(new File(fileName).getName());
             
             //message and pdf
             Multipart multipart = new MimeMultipart();
@@ -73,3 +73,4 @@ public class SendEmail {
         }
     }
 }
+
