@@ -1,29 +1,40 @@
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
-import java.io.File;
 import java.io.FileOutputStream;
-
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
+import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
-        String htmlFilePath = "src/main/resources/p-nine-report.html";
-        String outputPdfPath = "src/out/report.pdf";
+        String htmlFilePath = "target/classes/account-statements.html";
+        String outputPdfPath = "src/out/statements.pdf";
 
         try {
+            // Ensure output directory exists
             new File("src/out").mkdirs();
 
-            try(FileOutputStream os= new FileOutputStream(outputPdfPath)) {
-                PdfRendererBuilder builder = new PdfRendererBuilder(); 
+            // ✅ Read the HTML as UTF-8 text (this removes BOM/hidden chars)
+            String html = new String(Files.readAllBytes(Paths.get(htmlFilePath)), StandardCharsets.UTF_8);
+
+            try (OutputStream os = new FileOutputStream(outputPdfPath)) {
+                PdfRendererBuilder builder = new PdfRendererBuilder();
                 builder.useFastMode();
-                builder.withFile(new File(htmlFilePath));
+
+                // ✅ Load HTML content directly (safer than withFile)
+                builder.withHtmlContent(html, new File(".").toURI().toString());
                 builder.toStream(os);
+
+                // Run the conversion
                 builder.run();
             }
 
-            System.out.println("PDF created successfully at: " + outputPdfPath);
+            System.out.println("✅ PDF created successfully at: " + outputPdfPath);
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Error generating PDF: " + e.getMessage());
+            System.err.println("❌ Error generating PDF: " + e.getMessage());
         }
     }
 }
