@@ -1,28 +1,27 @@
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.DataSource;
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
+
 import javax.mail.Transport;
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import utils.DecryptPassword;
 
 
 public class SendEmail {
     public static void main(String[] args) {
 
         // Recipient and sender emails
-        String recipient = "kananamwenda20@gmail.com";
-        String sender = "lizamwenda95@gmail.com";
+        String recipient = "lizamwenda95@gmail.com";
+        String sender = "kananamwenda20@gmail.com";
 
         // Gmail SMTP host
         String host = "smtp.gmail.com";
 
         // Gmail authentication credentials
         final String username = "kananamwenda20@gmail.com"; 
-        final String password = "sfoq hwop njvp qsqt";
+        final String password = DecryptPassword.getDecryptedPassword();
 
         // Mail properties
         Properties properties = new Properties();
@@ -44,29 +43,12 @@ public class SendEmail {
 
             message.setFrom(new InternetAddress(sender)); //senders email
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient)); //recipients email
-            message.setSubject("Statements PDF"); //subject
+            message.setSubject("Test Email using Gmail SMTP"); //subject
             
-            // Load HTML email template from file path
-            String htmlFilePath = "target/classes/emailtemplate.html"; 
-            String htmlContent = Files.readString(Paths.get(htmlFilePath));
-
-            // HTML Body Part
-            MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setContent(htmlContent, "text/html; charset=utf-8");
-
-            //pdf body part
-            MimeBodyPart attachmentPart = new MimeBodyPart();
-            String fileName = "src/out/statements.pdf";
-            DataSource source = new FileDataSource(fileName);
-            attachmentPart.setDataHandler(new DataHandler(source));
-            attachmentPart.setFileName(new File(fileName).getName());
-            
-            //message and pdf
-            Multipart multipart = new MimeMultipart();
-            multipart.addBodyPart(messageBodyPart);
-            multipart.addBodyPart(attachmentPart);
-
-            message.setContent(multipart);
+            //html template
+            String htmlTemplate = new String(Files.readAllBytes(Paths.get("EmailSenderApp/templates/welcome.html")));
+   
+            message.setContent(htmlTemplate, "text/html;");
 
             // Send the message
             Transport.send(message);
@@ -76,4 +58,3 @@ public class SendEmail {
         }
     }
 }
-
