@@ -15,14 +15,14 @@ public class Main {
             // Ensure output directory exists
             new File("src/out").mkdirs();
 
-            // ✅ Read the HTML as UTF-8 text (this removes BOM/hidden chars)
+            // Read the HTML
             String html = new String(Files.readAllBytes(Paths.get(htmlFilePath)), StandardCharsets.UTF_8);
 
             try (OutputStream os = new FileOutputStream(outputPdfPath)) {
                 PdfRendererBuilder builder = new PdfRendererBuilder();
                 builder.useFastMode();
 
-                // ✅ Load HTML content directly (safer than withFile)
+                // Load HTML content directly, setting base URI to the project root for correct asset resolution
                 builder.withHtmlContent(html, new File(".").toURI().toString());
                 builder.toStream(os);
 
@@ -30,11 +30,11 @@ public class Main {
                 builder.run();
             }
 
-            System.out.println("✅ PDF created successfully at: " + outputPdfPath);
+            System.out.println(" PDF created successfully at: " + outputPdfPath);
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("❌ Error generating PDF: " + e.getMessage());
+            System.err.println(" Error generating PDF: " + e.getMessage());
         }
     }
 }

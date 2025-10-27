@@ -6,7 +6,6 @@ import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.mail.Transport;
 import java.io.File;
-import javax.mail.PasswordAuthentication;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -15,8 +14,8 @@ public class SendEmail {
     public static void main(String[] args) {
 
         // Recipient and sender emails
-        String recipient = "ochomoswill@gmail.com";
-        String sender = "kananamwenda20@gmail.com";
+        String recipient = "kananamwenda20@gmail.com";
+        String sender = "lizamwenda95@gmail.com";
 
         // Gmail SMTP host
         String host = "smtp.gmail.com";
@@ -45,15 +44,19 @@ public class SendEmail {
 
             message.setFrom(new InternetAddress(sender)); //senders email
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient)); //recipients email
-            message.setSubject("P9 Report PDF"); //subject
+            message.setSubject("Statements PDF"); //subject
             
-            //message body part
+            // Load HTML email template from file path
+            String htmlFilePath = "target/classes/emailtemplate.html"; 
+            String htmlContent = Files.readString(Paths.get(htmlFilePath));
+
+            // HTML Body Part
             MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText("Hi.Find attached the PDF.");
+            messageBodyPart.setContent(htmlContent, "text/html; charset=utf-8");
 
             //pdf body part
             MimeBodyPart attachmentPart = new MimeBodyPart();
-            String fileName = "src/out/report.pdf";
+            String fileName = "src/out/statements.pdf";
             DataSource source = new FileDataSource(fileName);
             attachmentPart.setDataHandler(new DataHandler(source));
             attachmentPart.setFileName(new File(fileName).getName());

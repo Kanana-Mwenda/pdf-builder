@@ -1,79 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8"/>
     <title>Account Statements</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 30mm;
+        }
 
-<style>
-@page {
-    size: A4;
-    margin: 30mm; /* top, right, bottom, left */
-}
-th:nth-child(4), td:nth-child(4),
-th:nth-child(5), td:nth-child(5),
-th:nth-child(6), td:nth-child(6) {
-    text-align: right;
-}
-</style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .column-left {
+            flex-shrink: 0;
+        }
+
+        .header img {
+            width: 180px;
+            height: 180px;
+        }
+
+        .header .column-right {
+            text-align: right;
+        }
+
+        hr.green-line {
+            border: none;
+            height: 3px;
+            background-color: #14ed18;
+            width: 92%;
+            margin: 10px auto;
+        }
+
+        .details-container {
+            margin: 20px 30px;
+            overflow: hidden; /* Clear floats */
+        }
+
+        .column-left {
+            float: left;
+            width: 48%;
+        }
+
+        .column-right {
+            float: right;
+            width: 48%;
+            font-size: 14px;
+        }
+
+        .balances p {
+            width: 100%;
+            margin: 4px 0;
+        }
+
+        .balances span {
+            float: right;
+        }
+
+        th:nth-child(4), td:nth-child(4),
+        th:nth-child(5), td:nth-child(5),
+        th:nth-child(6), td:nth-child(6) {
+            text-align: right;
+        }
+    </style>
 </head>
-<body style="margin:0; padding:0; font-family:Helvetica, arial, freesans,clean, sans-serif; font-size: 14px;">
-    <div style="max-width: 1000px; margin: 0 auto; position: relative;">
-        <div class="header" style="overflow: hidden;">
-        <div class="column-left" style="float:left; margin-left: 30px;">
-            <img src="/src/assets/ukulima-sacco-logo.png" alt="sacco-logo" style="width:200px; height:200px; top:10px;" />
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="column-left">
+                <img src="../../src/assets/ukulima-sacco-logo.png" alt="sacco-logo" />
+            </div>
+            <div class="column-right" style="">
+                <p><strong>UKULIMA SACCO</strong></p>
+                <p>Date Issued: 3 June 2022</p>
+            </div>
         </div>
 
-        <div class="column-right" style="float:right; margin-right: 30px; font-family:Helvetica, arial, freesans,clean, sans-serif; font-size: 14px;">
-            <p style="margin-top: 65px; margin-right:30px; text-align:right;">UKULIMA SACCO</p>
-            <p style="margin-top: 40px; margin-right: 30px;">Date Issued: 3 June 2022</p>
-        </div>
-    </div>
+        <hr class="green-line" style="margin-top: -30px; width:95%;" />
 
-    <hr style="border: none; height: 3px; clear:both; margin:-20px auto 10px auto; background-color: #14ed18; width: 92%; position: absolute; top: 170px; left: 30px;" />
+        <!-- Customer Details -->
+        <div class="details-container">
+            <div class="column-left">
+                <p><strong>Mr. John Juma</strong></p>
+                <p>+254722368794</p>
+                <p><strong>7 Jan 2022 to 2 June 2022</strong></p>
+                <p><strong>FOSA Savings Account (5050123278000)</strong></p>
 
-    <!-- customer details -->
-    <div class="details-container" style="position:relative; margin-top:-60px; padding-top:10px; clear:both;">
-        <div style="max-width: 1000px; margin: 0 auto; position: relative;">
-        <div class="column-left" style="float:left; padding-left: 0; margin-left:30px; position: relative; width: 55%;">
-            <p style="font-weight: bold;">Mr. John Juma</p>
-            <p style="margin-top: -5px;">+254722368794</p>
-            <p style="margin-top: -5px; font-weight: bold;">7 Jan 2022 to 2 June 2022</p>
-            <p style="margin-top: -5px; font-weight: bold;">FOSA Savings Account (5050123278000)</p>
+                <hr class="green-line" style="height:1.5px; width:100%; margin:10px 0;" />
 
-            <hr style="border: none; height: 1.5px; clear:both; margin:-20px auto 10px auto; background-color: #14ed18; width: 90%; position: absolute; top: 135px; left: -5px;" />
+                <div class="balances">
+                    <p>Opening Balance <span>25,012.49</span></p>
+                    <p>Credits <span style="color:#12d415;">1,336,895.23</span></p>
+                    <p>Debits <span style="color:red;">1,276,787.86</span></p>
 
-            <p style="width: 80%; display: inline-block; margin-top: 5px;">Opening Balance
-                <span style="float:right;">25,012.49</span>
-            </p>
-            <p style="width: 80%; display: inline-block; margin-top: -5px; ">Credits
-                <span style="float:right; color:#12d415">1,336,895.23</span>
-            </p>
-            <p style="width: 80%; display: inline-block; margin-top: -5px;">Debits
-                <span style="float:right; color:red">1,276,787.86</span>
-            </p>
+                    <hr class="green-line" style="height:1.5px; width:100%; margin:10px 0;" />
 
-            <hr style="border: none; height: 1.5px; clear:both; margin:65px auto 10px auto; background-color: #14ed18; width: 90%; position: absolute; top: 145px; left: -5px;" />
+                    <p>Closing Balance <span><strong>65,119.86</strong></span></p>
+                </div>
+            </div>
 
-            <p style="width: 80%; display: inline-block; margin-top: -5px;">Closing Balance
-                <span style="float:right; font-weight: bold;">65,119.86</span>
-            </p>
+            <!-- Contact Information -->
+            <div class="column-right">
+                <p><strong>Contact Information</strong></p>
+                <p><strong>Email:</strong> info@ukulimasacco.coop</p>
+                <p><strong>Website:</strong> https://ukulimasacco.coop</p>
+                <p><strong>Tel:</strong> 0709943000</p>
+                <p>Contact us for questions on this statement, change of personal information, and general inquiries.</p>
+                <p>Mon - Fri: 8:30am - 5:00 PM</p>
+            </div>
         </div>
 
-        <!-- contact info -->
-        <div class="column-right" style="float:right; padding-right:0; margin-right: 30px; position:relative; width: 35%;">
-            <p style="font-weight: bold;">Contact Information</p>
-            <p><strong>Email:</strong> info@ukulimasacco.coop</p>
-            <p><strong>Website:</strong> https://ukulimasacco.coop</p>
-            <p><strong>Tel:</strong> 0709943000</p>
-            <p>Contact us for questions on this statement, change of personal information, and general inquiries.</p>
-            <p>Mon - Fri: 8:30am - 5:00 PM</p>
-        </div>
-    </div>
+        <hr class="green-line" style="height:2px; width:94%; margin:10px auto; margin-left: 40px;" />
 
-    <hr style="border: none; height: 2px; background-color: #14ed18; width: 90%; margin: 10px 0 10px 30px;" />
-
-    <!-- table data -->
-    <div class="table-container" style="position: relative; margin-top: 10px; ">
-        <table border="1" cellpadding="5" cellspacing="0" style="width:90%; margin-bottom: 10px; margin-left:30px; border: 1px solid rgb(204, 203, 203); font-family:Helvetica, arial, freesans,clean, sans-serif; font-size: 14px;">
+        <!-- table data -->
+        <div class="table-container" style="position: relative; margin-top: 10px; ">
+            <table border="1" cellpadding="3" cellspacing="0" style="width:95%; margin-bottom: 10px; margin-left:30px; border: 1px solid rgb(204, 203, 203); font-family:Helvetica, arial, freesans,clean, sans-serif; font-size: 12px;">
             <tr style="background-color: #12d415; color:#ffffff">
                 <th>Date</th>
                 <th>Doc No</th>
@@ -85,8 +144,8 @@ th:nth-child(6), td:nth-child(6) {
             <tr><td>7 Jan 2022</td><td>QAPFRM749Q</td> <td>Loan Repayment</td><td>20,000.00</td><td></td><td>25,012.49</td></tr>
             <tr><td>7 Jan 2022</td><td>QAPFRM749Q</td><td>Loan Repayment Fee</td><td></td><td>5.00</td><td>25,007.49</td></tr>
             <tr><td>7 Jan 2022</td><td>QAPFRM749Q</td><td>Loan Repayment</td><td></td><td>20,000.00</td><td>5,007.49</td></tr>
-            <tr><td>7 Jan 2022</td><td>SPV0000175</td><td>PROJECTS & PRODUCT DELIVERY STAFF ALLOWANCE</td><td>35,000.00</td><td></td><td>40,007.49</td></tr>
-            <tr><td>7 Jan 2022</td><td>SPV0000175</td><td>Withholding Tax-PROJECTS & PRODUCT DELIVERY STAFF</td> <td></td><td>7,500.00</td><td>32,507.49</td></tr>
+            <tr><td>7 Jan 2022</td><td>SPV0000175</td><td>PROJECTS &amp; PRODUCT DELIVERY STAFF ALLOWANCE</td><td>35,000.00</td><td></td><td>40,007.49</td></tr>
+            <tr><td>7 Jan 2022</td><td>SPV0000175</td><td>Withholding Tax-PROJECTS &amp; PRODUCT DELIVERY STAFF</td> <td></td><td>7,500.00</td><td>32,507.49</td></tr>
             <tr><td>7 Jan 2022</td><td>SPV0000175</td><td>Allowances Processing Fee</td><td>0.00</td><td>200.00</td><td>32,307.49</td></tr>
             <tr><td>7 Jan 2022</td><td>SPV0000175</td><td>Allowances Processing Fee Excise Duty</td><td>0.00</td><td>40.00</td><td>32,267.49</td></tr>
             <tr><td>7 Jan 2022</td><td>ZYCU1U7</td><td>Balance Enquiry: 5050123278000</td><td>0.00</td><td>23.00</td><td>32,244.49</td></tr>
@@ -146,8 +205,8 @@ th:nth-child(6), td:nth-child(6) {
             <tr><td>15 Feb 2022</td><td>CT00492816</td><td>Cash Withdrawal - MRS CATHERINE ATIENO OBAGO</td><td>0.00</td><td>400,000.00</td><td>17,438.61</td></tr>
             <tr><td>15 Feb 2022</td><td>CT00492816</td><td>Cash Withdrawal Charges</td><td>0.00</td><td>200.00</td><td>17,238.61</td></tr>
             <tr><td>15 Feb 2022</td><td>CT00492816</td><td>Excise Duty</td><td>0.00</td><td>40.00</td><td>17,198.61</td></tr>
-            <tr><td>16 Feb 2022</td><td>SPV0000235</td><td>YEAR 2021 STAFF BONUS - GRADE 7,8 & 9</td><td>150,000.00</td><td>0.00</td><td>167,188.61</td></tr>
-            <tr><td>16 Feb 2022</td><td>SPV0000235</td><td>Withholding Tax - YEAR 2021 STAFF BONUS - GRADE 7,8 & 9</td><td>0.00</td><td>45,000.00</td><td>122,188.61</td></tr>
+            <tr><td>16 Feb 2022</td><td>SPV0000235</td><td>YEAR 2021 STAFF BONUS - GRADE 7,8 &amp; 9</td><td>150,000.00</td><td>0.00</td><td>167,188.61</td></tr>
+            <tr><td>16 Feb 2022</td><td>SPV0000235</td><td>Withholding Tax - YEAR 2021 STAFF BONUS - GRADE 7,8 &amp; 9</td><td>0.00</td><td>45,000.00</td><td>122,188.61</td></tr>
             <tr><td>28 Feb 2022</td><td>SAL0007484</td><td>FEBRUARY 2022 STAFF SALARY</td><td>60,799.00</td><td>0.00</td><td>62,350.94</td></tr>
             <tr><td>28 Feb 2022</td><td>SAL0007484</td><td>Salary Processing Charge</td><td>0.00</td><td>200.00</td><td>62,150.94</td></tr>
             <tr><td>28 Feb 2022</td><td>SAL0007484</td><td>Excise Duty</td><td>0.00</td><td>40.00</td><td>62,110.94</td></tr>
@@ -172,8 +231,8 @@ th:nth-child(6), td:nth-child(6) {
             <tr><td>2 Mar 2022</td><td>SPV0000256</td><td>Allowances Processing Fee</td><td>0.00</td><td>200.00</td><td>73,860.67</td></tr>
             <tr><td>2 Mar 2022</td><td>SPV0000256</td><td>Allowances Processing Fee Excise Duty</td><td>0.00</td><td>40.00</td><td>73,820.67</td></tr>
             <tr><td>3 Mar 2022</td><td>130UU1U7</td><td>Balance Enquiry: 5050123278000</td><td>0.00</td><td>23.00</td><td>73,797.67</td></tr>
-            <tr><td>4 Mar 2022</td><td>SPV0000259</td><td>2021 DIV PREP, RECON & POSTING TEAM STAFF ALLOWANCE</td><td>42,000.00</td><td>0.00</td><td>115,797.67</td></tr>
-            <tr><td>4 Mar 2022</td><td>SPV0000259</td><td>Withholding Tax - 2021 DIV PREP, RECON & POSTING TEAM</td><td>0.00</td><td>9,000.00</td><td>106,797.67</td></tr>
+            <tr><td>4 Mar 2022</td><td>SPV0000259</td><td>2021 DIV PREP, RECON &amp; POSTING TEAM STAFF ALLOWANCE</td><td>42,000.00</td><td>0.00</td><td>115,797.67</td></tr>
+            <tr><td>4 Mar 2022</td><td>SPV0000259</td><td>Withholding Tax - 2021 DIV PREP, RECON &amp; POSTING TEAM</td><td>0.00</td><td>9,000.00</td><td>106,797.67</td></tr>
             <tr><td>4 Mar 2022</td><td>SPV0000259</td><td>Allowances Processing Fee</td><td>0.00</td><td>200.00</td><td>106,597.67</td></tr>
             <tr><td>4 Mar 2022</td><td>SPV0000259</td><td>Allowances Processing Fee Excise Duty</td><td>0.00</td><td>40.00</td><td>106,557.67</td></tr>
             <tr><td>9 Mar 2022</td><td>14IW5M5T</td><td>Account Transfer 5050123278000 → FC0002286</td><td>0.00</td><td>10,000.00</td><td>96,557.67</td></tr>
@@ -582,5 +641,6 @@ th:nth-child(6), td:nth-child(6) {
     </div>
     <p style="font-weight: bold; font-size: 16px; margin-left:35px;">Account Balance
         <span style="float:right; margin-right:150px;">65,119.86</span></p>
+    </div>
 </body>
 </html>
