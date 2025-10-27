@@ -6,7 +6,7 @@
     <style>
         @page {
             size: A4 landscape;
-            margin: 30mm;
+            margin: 10mm 30mm 30mm 30mm;
         }
 
         .container {
@@ -14,14 +14,30 @@
             margin: 0 auto;
         }
 
+        .header {
+            display: table;
+            width: 100%;
+            margin-bottom: 0px;
+        }
+
+        .header .column-left {
+            display: table-cell;
+            vertical-align: top;
+            margin-top: 0px;
+        }
+
         .header img {
-            width: 200px;
-            height: 180px;
+            width: 150px;
+            height: 135px;
             margin-left:30px;
         }
 
         .header .column-right {
+            display: table-cell;
+            vertical-align: top;
             text-align: right;
+            margin-right: 40px;
+            margin-top: 0px;
         }
 
         hr.green-line {
@@ -71,16 +87,17 @@
             <div class="column-left">
                 <img src="../../src/assets/ukulima-sacco-logo.png" alt="sacco-logo" />
             </div>
-            <div class="column-right" style="margin-right: 40px; margin-top:45px;">
-                <p><strong>UKULIMA SACCO</strong></p><br>
-                <p>Date Issued: 3 June 2022</p>
-            </div>
+    <div class="column-right" style="margin-right: 40px; margin-top:0px; margin-bottom: -20px; page-break-before: avoid;">
+        <p style="margin-bottom: 40px;"><strong>UKULIMA SACCO</strong></p>
+        <p>Date Issued: 3 June 2022</p>
+    </div>
+    <div style="clear: both;"></div>
         </div>
 
-        <hr class="green-line" style="margin-top: 5px; width:95%;" />
+        <hr class="green-line" style="margin-top: -15px; width:95%;" />
 
         <!-- Customer Details -->
-        <div class="details-container">
+        <div class="details-container" style="page-break-before: avoid;">
             <div class="column-left">
                 <p><strong>Mr. John Juma</strong></p>
                 <p>+254722368794</p>
@@ -111,10 +128,10 @@
             </div>
         </div>
 
-        <hr class="green-line" style="height:2px; width:94%; margin:10px auto; margin-left: 40px;" />
+        <hr class="green-line" style="height:2px; width:94%; margin:10px auto; margin-left: 32px;" />
 
         <!-- table data -->
-        <div class="table-container" style="position: relative; margin-top: 10px; ">
+        <div class="table-container" style="position: relative; margin-top: 0px; page-break-before: avoid;">
             <table border="1" cellpadding="3" cellspacing="0" style="width:95%; margin-bottom: 10px; margin-left:30px; border: 1px solid rgb(204, 203, 203); font-family:Helvetica, arial, freesans,clean, sans-serif; font-size: 12px;">
             <tr style="background-color: #12d415; color:#ffffff">
                 <th>Date</th>
@@ -622,8 +639,8 @@
 
         </table>
     </div>
+    </div>
     <p style="font-weight: bold; font-size: 16px; margin-left:35px;">Account Balance
         <span style="float:right; margin-right:150px;">65,119.86</span></p>
-    </div>
 </body>
 </html>
