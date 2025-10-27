@@ -22,11 +22,9 @@ public class Main {
                 PdfRendererBuilder builder = new PdfRendererBuilder();
                 builder.useFastMode();
 
-                // Load HTML content directly, setting base URI to the project root for correct asset resolution
-                builder.withHtmlContent(html, new File(".").toURI().toString());
+                // Load HTML content directly, setting base URI to the directory containing the HTML file for correct asset resolution
+                builder.withHtmlContent(html, new File("target/classes").toURI().toString());
                 builder.toStream(os);
-
-                // Run the conversion
                 builder.run();
             }
 
