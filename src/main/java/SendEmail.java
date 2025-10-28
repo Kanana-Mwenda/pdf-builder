@@ -6,7 +6,9 @@ import javax.mail.Transport;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import utils.DecryptPassword;
+import EmailSenderApp.src.DecryptPassword;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 
 
 public class SendEmail {
@@ -43,12 +45,27 @@ public class SendEmail {
 
             message.setFrom(new InternetAddress(sender)); //senders email
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient)); //recipients email
-            message.setSubject("Test Email using Gmail SMTP"); //subject
-            
-            //html template
-            String htmlTemplate = new String(Files.readAllBytes(Paths.get("EmailSenderApp/templates/welcome.html")));
-   
-            message.setContent(htmlTemplate, "text/html;");
+            message.setSubject("Account Statements PDF"); //subject
+
+            // Create multipart
+            Multipart multipart = new MimeMultipart();
+
+            // HTML body part
+            MimeBodyPart htmlPart = new MimeBodyPart();
+            String htmlTemplate = new String(Files.readAllBytes(Paths.get("target/classes/emailtemplate.html")));
+            htmlPart.setContent(htmlTemplate, "text/html");
+            multipart.addBodyPart(htmlPart);
+
+            // Attachment body part
+            MimeBodyPart attachmentPart = new MimeBodyPart();
+            String attachmentPath = "src/out/statements.pdf";
+            FileDataSource source = new FileDataSource(attachmentPath);
+            attachmentPart.setDataHandler(new DataHandler(source));
+            attachmentPart.setFileName("statements.pdf");
+            multipart.addBodyPart(attachmentPart);
+
+            // Set multipart as content
+            message.setContent(multipart);
 
             // Send the message
             Transport.send(message);
